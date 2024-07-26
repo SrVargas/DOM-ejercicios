@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicios DOM</title>
+  <style>
+    .resaltado {
+      background-color: yellow;
+    }
+    .caja {
+      border: 1px solid black;
+      padding: 20px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Ejercicio 1: Selección Básica -->
+  <h1 id="titulo">Hola Mundo</h1>
+  <p class="descripcion">Este es un párrafo de descripción.</p>
+  <button id="boton">Haz clic aquí</button>
+  <div class="contenido">
+    <p class="mensaje">Mensaje dentro del div</p>
+  </div>
+  
+  <!-- Ejercicio 2: Manipulación de Contenido -->
+  <h2 id="encabezado">Encabezado Original</h2>
+  <p class="parrafo">Texto original del párrafo.</p>
+  <button id="cambiar">Cambiar Contenido</button>
+  
+  <!-- Ejercicio 3: Manipulación de Atributos -->
+  <img id="imagen" src="imagen-original.jpg" alt="Imagen Original">
+  <a id="enlace" href="https://www.example.com">Ir a Example.com</a>
+  
+  <!-- Ejercicio 4: Manipulación de Clases -->
+  <div id="box" class="caja">Caja de Texto</div>
+  <button id="toggle">Toggle Resaltado</button>
+  
+  <!-- Ejercicio 5: Manipulación de Eventos -->
+  <button id="mostrarAlerta">Mostrar Alerta</button>
+  <input id="campoTexto" type="text" placeholder="Escribe algo">
+  
+  <!-- Ejercicio 6: Navegación en el DOM -->
+  <div id="padre">
+    <p class="hijo">Hijo 1</p>
+    <p class="hijo">Hijo 2</p>
+  </div>
+  <button id="modificar">Modificar Texto</button>
+
+  <script>
+    // Ejercicio 1: Selección Básica
+    const titulo = document.querySelector('#titulo');
+    console.log(titulo.textContent);
+
+    const descripcion = document.querySelector('.descripcion');
+    console.log(descripcion.textContent);
+
+    const boton = document.querySelector('#boton');
+    console.log(boton.textContent);
+
+    const mensaje = document.querySelector('.contenido .mensaje');
+    console.log(mensaje.textContent);
+
+    // Ejercicio 2: Manipulación de Contenido
+    const encabezado = document.querySelector('#encabezado');
+    const parrafo = document.querySelector('.parrafo');
+    const cambiarContenido = document.querySelector('#cambiar');
+
+    cambiarContenido.addEventListener('click', () => {
+      encabezado.textContent = 'Nuevo Encabezado';
+      parrafo.textContent = 'Nuevo Texto del Párrafo';
+      document.body.style.backgroundColor = 'lightblue';
+    });
+
+    // Ejercicio 3: Manipulación de Atributos
+    const imagen = document.querySelector('#imagen');
+    const enlace = document.querySelector('#enlace');
+
+    imagen.src = 'nueva-imagen.jpg';
+    enlace.href = 'https://www.google.com';
+    enlace.setAttribute('title', 'Enlace a Google');
+
+    // Ejercicio 4: Manipulación de Clases
+    const box = document.querySelector('#box');
+    const toggle = document.querySelector('#toggle');
+
+    toggle.addEventListener('click', () => {
+      box.classList.toggle('resaltado');
+    });
+
+    // Ejercicio 5: Manipulación de Eventos
+    const mostrarAlerta = document.querySelector('#mostrarAlerta');
+    const campoTexto = document.querySelector('#campoTexto');
+
+    mostrarAlerta.addEventListener('click', () => {
+      alert('Botón clickeado!');
+    });
+
+    campoTexto.addEventListener('input', () => {
+      console.log(campoTexto.value);
+    });
+
+    // Ejercicio 6: Navegación en el DOM
+    const padre = document.querySelector('#padre');
+    const primerHijo = padre.querySelector('.hijo');
+    const segundoHijo = padre.querySelectorAll('.hijo')[1];
+    const modificarTexto = document.querySelector('#modificar');
+
+    primerHijo.textContent = 'Texto Modificado';
+    
+    modificarTexto.addEventListener('click', () => {
+      segundoHijo.textContent = 'Texto Modificado 2';
+    });
+  </script>
+</body>
+</html>
